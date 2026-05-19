@@ -1,0 +1,48 @@
+# How to delete your account
+
+Live My Gospel lets you permanently delete your account from inside the app. You do not need to email support.
+
+## Steps
+
+1. Sign in to the app.
+2. Open the **Settings** tab (bottom navigation).
+3. Scroll to the **Account** section at the bottom.
+4. Tap **Delete Account**.
+5. Read the confirmation message: *“This permanently deletes your account and your app data. This cannot be undone.”*
+6. Tap **Delete account** again to confirm.
+
+When deletion succeeds, you are signed out and returned to the login screen.
+
+## What gets deleted
+
+Deletion is permanent. The app removes:
+
+- Your sign-in account (email/password or linked Google sign-in)
+- Calendar events and event exceptions
+- Weekly goals and calendar categories
+- People contacts, dot labels, dot history, and indicators
+  
+## What is not deleted by this flow
+
+- **Sign out** only ends your session; your data stays on the server. Use **Sign Out** if you want to log in again later on this or another device.
+- Data that was already exported or copied outside the app (screenshots, calendar exports, etc.) is not recalled.
+- If you subscribed to an external newsletter (for example via the welcome flow), manage that subscription on the newsletter provider’s site; account deletion in Live My Gospel does not automatically unsubscribe you there.
+
+## If deletion fails
+
+You may see **Delete failed** with a short message. Common causes:
+
+| Message / situation | What to try |
+|-------------------|-------------|
+| Not signed in | Sign in again, then retry from Settings. |
+| Network error | Check internet connection and try again. |
+| “Account deletion is not available right now” | The server function may be updating; wait a few minutes and retry. |
+| Upload / storage error | Try again; the app deletes your uploaded images before removing the account. |
+
+If it still fails, note the exact error text and contact the app maintainer.
+
+## Technical reference (developers)
+
+- UI: `app/(tabs)/settings.js` → `handleDeleteAccount`
+- Client: `api.deleteMyAccount()` in `src/api.js` (storage cleanup, then RPC)
+- Server: `public.delete_my_account()` in `scripts/account_deletion.sql`
